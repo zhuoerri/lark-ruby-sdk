@@ -30,6 +30,7 @@ module Lark
     api_mount :'v4/calendar'
     api_mount :docx
     api_mount :'v2/block'
+    api_mount :'v4/approval'
 
     attr_reader :app_id, :app_secret, :tenant_key, :isv, :options
 
