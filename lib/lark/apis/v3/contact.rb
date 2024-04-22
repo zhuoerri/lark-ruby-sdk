@@ -37,6 +37,14 @@ module Lark
           all_data
         end
 
+        def user_batch_get_id(user_id_type: nil, payload: {})
+          uri = URI('contact/v3/users/batch_get_id')
+          params = {}
+          params[:user_id_type] = user_id_type if user_id_type
+          uri.query = URI.encode_www_form(params) if params.present?
+          post uri.to_s, payload
+        end
+
         # User
         def user(user_id, user_id_type: nil, department_id_type: nil)
           get "contact/v3/users/#{user_id}", params: {
