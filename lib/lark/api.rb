@@ -98,11 +98,19 @@ module Lark
       tenant_token_store.token
     end
 
+    def user_access_token(code)
+      user_access_store(code).token
+    end
+
     def jsapi_ticket
       jsapi_ticket_store.token
     end
 
     private
+
+    def user_access_store(code)
+      TokenStore::UserAccessToken.new(self, code)
+    end
 
     def jsapi_ticket_store
       return @jsapi_ticket_store if defined?(@jsapi_ticket_store)
